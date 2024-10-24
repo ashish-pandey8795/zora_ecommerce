@@ -189,10 +189,10 @@ export default function Contact() {
                   name="eventType"
                   value={formData.eventType}
                   onChange={handleChange}
-                  className="w-full border rounded px-3 py-3 bg-gray-100 outline-none"
+                  className=" select_event w-full border rounded px-3 py-3 bg-gray-100 outline-none"
                   required
                 >
-                  <option value="" disabled>
+                  <option className="default_text" value="" disabled>
                     Select event type
                   </option>
                   <option value="wedding">Wedding</option>
@@ -208,10 +208,10 @@ export default function Contact() {
                   name="howDidYouKnow"
                   value={formData.howDidYouKnow}
                   onChange={handleChange}
-                  className="w-full border rounded px-3 py-3 bg-gray-100 outline-none"
+                  className="select_event w-full border rounded px-3 py-3 bg-gray-100 outline-none"
                   required
                 >
-                  <option value="" disabled>
+                  <option className="default_text" value="" disabled>
                     How did you hear about us?
                   </option>
                   <option value="socialMedia">Social Media</option>
