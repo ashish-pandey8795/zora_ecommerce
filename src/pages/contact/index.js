@@ -73,10 +73,13 @@ export default function Contact() {
 
   return (
     <>
-      <motion.div exit={{ opacity: 0.5 }} transition={{ duration: 1 }}
-         initial={{ opacity: 0 }}
-         animate={{ opacity: 1 }}
-      className="md:h-screen pb-12 sm:pb-0 bg-gray-200 px-4 sm:p-0 w-full h-full bg-cover bg-center">
+      <motion.div
+        exit={{ opacity: 0.5 }}
+        transition={{ duration: 1 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className=" pb-12 sm:pb-0 bg-gray-200 px-4 sm:p-0 w-full min-h-screen h-full bg-cover bg-center"
+      >
         <div className="  container mx-auto flex justify-between items-center pt-12 sm:pr-12">
           <div
             className=""
