@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -72,8 +73,11 @@ export default function Contact() {
 
   return (
     <>
-      <div className="h-screen bg-gray-200 px-4 sm:p-0 w-full bg-cover bg-center">
-        <div className="container mx-auto flex justify-between items-center pt-12 pr-12">
+      <motion.div exit={{ opacity: 0.5 }} transition={{ duration: 1 }}
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+      className="md:h-screen pb-12 sm:pb-0 bg-gray-200 px-4 sm:p-0 w-full h-full bg-cover bg-center">
+        <div className="  container mx-auto flex justify-between items-center pt-12 sm:pr-12">
           <div
             className=""
             // style={{ paddingLeft: "calc((100vw - 100%) / 2)" }}
@@ -98,7 +102,7 @@ export default function Contact() {
         </div>
         <div className="container mx-auto flex justify-between items-center">
           <div
-            className=" flex justify-start sm:justify-between gap-10 xl:gap-0 pt-[4rem] w-full flex-wrap pr-12"
+            className=" flex justify-center sm:justify-between gap-10 xl:gap-0 pt-[4rem] w-full flex-wrap md:pr-12"
             // style={{ paddingLeft: "calc((100vw - 100%) / 2)" }}
           >
             <div className=" text-black max-w-[400px]">
@@ -234,7 +238,7 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="">
+              <div className="md:mb-8">
                 <button
                   type="submit"
                   className="border text-white bg-black outline-none rounded-full py-3 px-8 hover:bg-black-200 hover:text-white transition duration-300"
@@ -245,7 +249,7 @@ export default function Contact() {
             </form>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

@@ -1,5 +1,5 @@
 "use client"
-// import { createClient } from "contentful";
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
@@ -18,30 +18,12 @@ const slides = [
       "Experience the beautiful Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.",
   },
   {
-    backgroundImage: "/bg3.png",
+    backgroundImage: "/bg3.jpg",
     title: "Discover the Vibrant Culture",
     description:
       "From markets to food, Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna dolore magna aliquyam.",
-  },
-  
+  }
 ];
-
-// export async function getStaticProps() {
-//   const client = createClient({
-//     space: process.env.CONTENTFUL_SPACE_ID,
-//     accessToken: process.env.CONTENTFUL_ACCESS_KEY,
-//   });
-
-//   const res = await client.getEntries({ content_type: "homeTiles" });
-
-//   return {
-//     props: {
-//       homeTiles: res.items,
-//     },
-//     revalidate: 1,
-//   };
-// }
-    
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -61,45 +43,65 @@ function Home() {
   const { backgroundImage, title, description } = slides[currentSlide];
 
   return (
-    <div
-      className="bg-cover bg-center h-screen"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-      }}
-    >
-      <div className="h-full bg-black bg-opacity-50 pt-12 pb-12">
-        <Navbar />
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="mt-[15%] px-4 sm:px-0 max-w-[700px]">
-            <h1 className="text-white text-4xl sm:text-5xl max-w-full sm:max-w-[500px] leading-tight">
-              {title}
-            </h1>
-            <p className="text-white text-lg sm:text-xl pt-6 sm:pt-8">
-              {description}
-            </p>
-            <div className="flex text-white text-3xl sm:text-4xl pt-2 items-center">
-              <Image
-                className="cursor-pointer w-[70px] h-[27px]"
-                src="/left-arrow.svg"
-                width={100}
-                height={75}
-                alt="Arrow icon"
-                onClick={handlePrevSlide}
-              />
-              <span className="px-4">{`${currentSlide + 1}/${slides.length}`}</span>
-              <Image
-                className="cursor-pointer w-[70px] h-[27px]"
-                src="/right-arrow.svg"
-                width={100}
-                height={75}
-                alt="Arrow icon"
-                onClick={handleNextSlide}
-              />
+    <motion.div exit={{ opacity: 0.5 }} transition={{ duration: 1 }}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide} // Unique key for each slide
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.7 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-cover bg-center h-screen bg-gray-300"
+          style={{ backgroundImage: `url(${backgroundImage})` }}
+        >
+          <motion.div
+            className="h-full bg-black bg-opacity-50 pt-12 pb-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Navbar />
+            <div className="container mx-auto flex justify-between items-center">
+              <motion.div
+                className="mt-[15%] px-4 sm:px-0 max-w-[700px]"
+                key={`content-${currentSlide}`} // Unique key for text content
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h1 className="text-white text-4xl sm:text-5xl max-w-full sm:max-w-[500px] leading-tight">
+                  {title}
+                </h1>
+                <p className="text-white text-lg sm:text-xl pt-6 sm:pt-8">
+                  {description}
+                </p>
+                <div className="flex text-white text-3xl sm:text-4xl pt-2 items-center">
+                  <Image
+                    className="cursor-pointer w-[70px] h-[27px]"
+                    src="/left-arrow.svg"
+                    width={100}
+                    height={75}
+                    alt="Arrow icon"
+                    onClick={handlePrevSlide}
+                  />
+                  <span className="px-4">{`${currentSlide + 1}/${slides.length}`}</span>
+                  <Image
+                    className="cursor-pointer w-[70px] h-[27px]"
+                    src="/right-arrow.svg"
+                    width={100}
+                    height={75}
+                    alt="Arrow icon"
+                    onClick={handleNextSlide}
+                  />
+                </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
   );
 }
 
