@@ -48,16 +48,16 @@ function Home() {
         <motion.div
           key={currentSlide} // Unique key for each slide
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-cover bg-center h-screen bg-gray-300"
+          className="bg-cover bg-center h-screen h-full bg-gray-300"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
           <motion.div
-            className="h-full bg-black bg-opacity-50 pt-12 pb-12"
+            className="h-full bg-black sm:bg-opacity-50 bg-opacity-70 pt-12 pb-12"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.7 }}
+            animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
           >
