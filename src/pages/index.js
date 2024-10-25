@@ -12,7 +12,7 @@ const slides = [
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
   },
   {
-    backgroundImage: "/bg2.png",
+    backgroundImage: "/bg.jpg",
     title: "Explore the Heritage of Old Delhi",
     description:
       "Experience the beautiful Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.",
@@ -79,7 +79,7 @@ function Home() {
             </p>
             <div className="flex text-white text-3xl sm:text-4xl pt-2 items-center">
               <Image
-                className="cursor-pointer w-[50px]"
+                className="cursor-pointer w-[70px] h-[27px]"
                 src="/left-arrow.svg"
                 width={100}
                 height={75}
@@ -88,7 +88,7 @@ function Home() {
               />
               <span className="px-4">{`${currentSlide + 1}/${slides.length}`}</span>
               <Image
-                className="cursor-pointer w-[50px]"
+                className="cursor-pointer w-[70px] h-[27px]"
                 src="/right-arrow.svg"
                 width={100}
                 height={75}
