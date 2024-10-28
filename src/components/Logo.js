@@ -1,13 +1,15 @@
 import Image from "next/image";
 
-export default function Logo() {
+const Logo = ({ logo }) => {
   return (
     <Image
       className="cursor-pointer"
-      src="/WhiteLogo.svg"
-      width={200}
-      height={150}
-      alt="Innovatiview India Pvt. Ltd.Logo"
+      src={logo}
+      width={240}
+      height={240}
+      alt="Zora Logo"
     />
   );
-}
+};
+
+export default Logo;

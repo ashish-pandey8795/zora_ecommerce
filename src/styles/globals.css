@@ -59,8 +59,9 @@ h1{
   pointer-events: none; 
   background-color: red;
   z-index: 999;
+  
 }
 
 .default_text:disabled{
-  color: gray !important;
+  color: #212020 !important;
 }

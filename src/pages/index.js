@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 
 const slides = [
   {
-    backgroundImage: "/bg.png",
+    backgroundImage: "/bg1.jpg",
     title: "Love in the Center of New Delhi, India",
     description:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
@@ -46,9 +46,13 @@ function Home() {
   const { title, description } = slides[currentSlide];
 
   return (
-    <motion.div exit={{ opacity: 0.5 }} transition={{ duration: 1 }} className="relative h-screen">
+    <motion.div
+      exit={{ opacity: 0.3 }}
+      transition={{ duration: 0.3 }}
+      className="relative h-screen"
+    >
       {/* Layered Backgrounds */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {/* Previous Background */}
         {prevSlide !== null && (
           <motion.div
@@ -57,50 +61,52 @@ function Home() {
             style={{
               backgroundImage: `url(${slides[prevSlide].backgroundImage})`,
             }}
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
+            initial={{ x: 0 }}
+            animate={{ x: "-100%" }}
             transition={{ duration: 0.5 }}
           />
         )}
 
         {/* Current Background */}
         <motion.div
-          key={currentSlide}
+          key={`current-${currentSlide}`}
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url(${slides[currentSlide].backgroundImage})`,
           }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          transition={{ duration: 0.5 }}
         />
       </div>
 
       {/* Overlay and Content */}
       <div className="relative z-10 h-full bg-black bg-opacity-50 pt-12 pb-12">
-        <Navbar />
+        <Navbar contact={true} logo="/WhiteLogo.svg" />
         <div className="container mx-auto flex justify-between items-center h-full">
           <div className="mt-[15%] px-4 sm:px-0 max-w-[700px]">
-            <h1 className="text-white text-4xl sm:text-5xl leading-tight max-w-[450px]">
+            <h1 className="text-white font-[400] text-6xl leading-[1.16] max-w-[600px]">
               {title}
             </h1>
-            <p className="text-white text-lg sm:text-xl pt-6 sm:pt-8">
+            <p className="text-white text-[18px] max-w-[500px] py-5">
               {description}
             </p>
             <div className="flex text-white text-3xl sm:text-4xl pt-2 items-center">
               <Image
-                className="cursor-pointer w-[70px] h-[27px]"
+                className="cursor-pointer w-[120px] h-[27px]"
                 src="/left-arrow.svg"
                 width={100}
                 height={75}
                 alt="Arrow icon"
                 onClick={handlePrevSlide}
               />
-              <span className="px-4">{`${currentSlide + 1}/${slides.length}`}</span>
+              <span className="px-4 font-[300]">{`${currentSlide + 1}/${
+                slides.length
+              }`}</span>
               <Image
-                className="cursor-pointer w-[70px] h-[27px]"
+                className="cursor-pointer w-[120px] h-[27px]"
                 src="/right-arrow.svg"
-                width={100}
+                width={200}
                 height={75}
                 alt="Arrow icon"
                 onClick={handleNextSlide}
